@@ -6,7 +6,7 @@ export default function CalenderPieChart() {
   return (
     <CalendarProvider>
       <Calender />
-      <div className="flex">
+      <div className="flex" data-aos="fade-up" data-aos-duration="1000">
         <div className="w-1/2">
           <PieChart data={chartData} />
         </div>

@@ -27,7 +27,19 @@ export default function PieChart({ data }: PropsType) {
           },
         },
         animation: { duration: 200 },
-        plugins: { legend: {} },
+        plugins: {
+          legend: {
+            position: "bottom",
+            align: "center",
+            maxWidth: 100,
+            labels: {
+              boxWidth: 5,
+              boxHeight: 5,
+              padding: 2,
+              textAlign: "left",
+            },
+          },
+        },
       },
     });
 
