@@ -1,0 +1,32 @@
+import { CalendarProvider } from "@/hooks/calender-context";
+import Calender from "../calender/calender";
+import PieChart from "../charts/pieChart";
+
+export default function CalenderPieChart() {
+  return (
+    <CalendarProvider>
+      <Calender />
+      <div className="flex">
+        <div className="w-1/2">
+          <PieChart data={chartData} />
+        </div>
+        <div className="w-1/2">
+          <PieChart data={chartData} />
+        </div>
+      </div>
+    </CalendarProvider>
+  );
+}
+
+const chartData = {
+  labels: ["Cash", "Commodities", "Bonds", "Stock"],
+  datasets: [
+    {
+      label: "Sessions By Device",
+      data: [12, 13, 10, 65],
+      backgroundColor: ["#3EC972", "#F7CD4C", "#67BFFF", "#8470FF"],
+      hoverBackgroundColor: ["#3EC972", "#F0BB33", "#56B1F3", "#755FF8"],
+      borderWidth: 0,
+    },
+  ],
+};

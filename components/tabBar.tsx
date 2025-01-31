@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 export default function TabBar() {
   const pathname = usePathname().slice(1);
   return (
-    <nav className=" rounded-t-xl fixed bottom-0 left-0 w-full h-[50px] z-50 border-t-[0.5px] border-slate-200">
+    <nav className=" rounded-t-xl fixed bottom-0 left-0 w-full h-[40px] z-50 border-t-[0.5px] border-slate-200 bg-slate-100">
       <div className="flex items-center justify-evenly h-full">
         <Link href="/">
           <HomeSvg fill={pathname === ""} />

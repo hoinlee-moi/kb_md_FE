@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./utility.css";
+import "aos/dist/aos.css";
 import AOSProvider from "@/components/aosInit";
 import TabBar from "@/components/tabBar";
 
@@ -25,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${kbFonts.className} antialiased min-h-screen max-w-[620px] mx-auto bg-slate-50`}>
+      <body
+        className={`${kbFonts.className} antialiased min-h-screen max-w-[620px] mx-auto bg-slate-50`}
+      >
         <AOSProvider>
           {children}
 

@@ -3,7 +3,13 @@ type PropsType = {
 };
 export default function RankSvg({ fill }: PropsType) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24" fill={fill ? "#1c274c" : "none"}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="28px"
+      height="28px"
+      viewBox="0 0 24 24"
+      fill={fill ? "#1c274c" : "none"}
+    >
       <path
         d="M16 22V13C16 11.5858 16 10.8787 15.5607 10.4393C15.1213 10 14.4142 10 13 10H11C9.58579 10 8.87868 10 8.43934 10.4393C8 10.8787 8 11.5858 8 13V22"
         stroke="#1C274C"

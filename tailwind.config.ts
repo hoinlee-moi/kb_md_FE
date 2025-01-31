@@ -36,14 +36,6 @@ export default {
       pattern: /border-(main|sub|gray|warning)/,
       variants: ["has-[:checked]"],
     },
-    {
-      pattern: /bg-(main|sub|graywarning)/,
-      variants: ["hover", "focus", "peer-checked", "has-[:checked]"],
-    },
-    {
-      pattern: /accent-(main|sub|graywarning)/,
-      variants: ["hover", "focus", "peer-checked", "has-[:checked]"],
-    },
   ],
   theme: {
     extend: {
