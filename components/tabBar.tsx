@@ -14,7 +14,7 @@ export default function TabBar() {
         <Link href="/">
           <HomeSvg fill={pathname === ""} />
         </Link>
-        <Link href="/rank">
+        <Link href="/rank/nation">
           <RankSvg fill={pathname === "rank"} />
         </Link>
         <Link href="/reward/saving">

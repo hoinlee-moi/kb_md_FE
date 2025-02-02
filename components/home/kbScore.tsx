@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default function KbSocre() {
@@ -9,9 +10,11 @@ export default function KbSocre() {
       <p className="text-3xl mt-2">
         <i>1,032 </i> 점
       </p>
-      <Button className="bg-kb-main mt-3 text-kb-gray font-semibold" size="sm">
-        랭킹보기
-      </Button>
+      <Link href="/rank/nation">
+        <Button className="bg-kb-main mt-3 text-kb-gray font-semibold" size="sm">
+          랭킹보기
+        </Button>
+      </Link>
     </div>
   );
 }

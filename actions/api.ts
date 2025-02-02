@@ -4,14 +4,14 @@ const URL = "http://localhost:8080";
 //env로 넣어야 하지만 간단한 시연이니 전역으로 진행
 
 // 전국 랭킹조회
-export const getNationalRanking = async (userId: string) => {
+export const getNationalRanking = async (userId: string): Promise<GetRankResponDate> => {
   const res = await fetch(`${URL}/api/rankings/nationwide/${userId}`);
 
   return res.json();
 };
 
 //지역 랭킹조회
-export const getRegionalRanking = async (userId: string) => {
+export const getRegionalRanking = async (userId: string): Promise<GetRankResponDate> => {
   const res = await fetch(`${URL}/api/rankings/region/${userId}`);
 
   return res.json();

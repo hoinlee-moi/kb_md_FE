@@ -49,3 +49,11 @@ type GetRecentTrans = {
 type GetTotalAccBal = {
   userBalance: number;
 };
+
+type GetRankData = {
+  username: string;
+  region: string;
+  score: number;
+};
+
+type GetRankResponDate = [GetRankData[], { rank: number; score: number }];

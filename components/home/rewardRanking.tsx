@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default function RewardRanking() {
@@ -7,9 +8,11 @@ export default function RewardRanking() {
       <p className="text-3xl mt-2">
         <i>500</i> 점
       </p>
-      <Button className="bg-kb-main mt-3 text-kb-gray font-semibold" size="sm">
-        도전과제
-      </Button>
+      <Link href="/reward/saving">
+        <Button className="bg-kb-main mt-3 text-kb-gray font-semibold" size="sm">
+          도전과제
+        </Button>
+      </Link>
     </div>
   );
 }
