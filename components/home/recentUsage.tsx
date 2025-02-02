@@ -1,7 +1,13 @@
+"use client";
 import { cn } from "@/lib/utils";
 import Icon from "../ui/icon";
+import { useUserId } from "@/hooks/userId-context";
+import { useState } from "react";
 
 export default function RecentUsage() {
+  const { userId } = useUserId();
+  const [list, setList] = useState();
+
   return (
     <div>
       {/* <p className="text-lg font-bold border-b-2 border-black">최근 이용내역</p> */}
