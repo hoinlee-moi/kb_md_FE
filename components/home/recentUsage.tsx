@@ -10,7 +10,7 @@ export default function RecentUsage() {
           // category별 이미지 변환 생각
           <div className="flex items-center flex-nowrap" key={idx}>
             <div>
-              <Icon alt="" src="/assets/moneyicon.jpg" className="" />
+              <Icon alt="" src="/assets/moneyicon.jpg" className="" imgSize="32" />
             </div>
             <div className=" px-2 w-full font-semibold">
               <p className="">{content}</p>

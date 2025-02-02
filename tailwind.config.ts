@@ -2,35 +2,18 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   safelist: [
-    "flex flex-col space-y-3", //storybook용
-    "bg-slate-500", //컨펌필요
+    { pattern: /^w-\[\d{1,3}%\]$/ },
     { pattern: /text-(main|sub|gray|warning)/ },
     { pattern: /stroke-(main|sub|gray|warning)/ },
     {
       pattern: /text-(main|sub|gray|warning)-foreground/,
-      variants: [
-        "hover",
-        "focus",
-        "peer-focus",
-        "peer-checked",
-        "has-[:checked]",
-      ],
+      variants: ["hover", "focus", "peer-focus", "peer-checked", "has-[:checked]"],
     },
     {
       pattern: /text-(main|sub|gray|warning)/,
-      variants: [
-        "hover",
-        "focus",
-        "peer-focus",
-        "peer-checked",
-        "has-[:checked]",
-      ],
+      variants: ["hover", "focus", "peer-focus", "peer-checked", "has-[:checked]"],
     },
     {
       pattern: /border-(main|sub|gray|warning)/,

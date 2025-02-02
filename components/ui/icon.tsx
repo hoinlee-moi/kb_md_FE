@@ -28,13 +28,14 @@ type IconProps = {
   alt: string;
   children?: ReactNode;
   className?: string;
+  imgSize?: string;
 } & VariantProps<typeof IconVariants>;
 
-const Icon = ({ children, src, size, alt, className, noti }: IconProps) => {
+const Icon = ({ children, src, size, alt, className, noti, imgSize }: IconProps) => {
   return (
     <label className="relative">
       <div className={cn(IconVariants({ size, className }))}>
-        {children ? children : <Image src={src} style={{ objectFit: "cover" }} alt={alt} fill />}
+        {children ? children : <Image src={src} style={{ objectFit: "cover" }} alt={alt} fill sizes={imgSize} />}
       </div>
       {noti && (
         <div

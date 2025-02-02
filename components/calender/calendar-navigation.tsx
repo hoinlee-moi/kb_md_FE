@@ -13,9 +13,7 @@ export interface Event {
 export default function CalendarNavigation() {
   const { currentMonth, setCurrentMonth, renderDays } = CalendarProperties();
 
-  useEffect(() => {
-    console.log("이때요청");
-  }, [currentMonth]);
+  useEffect(() => {}, [currentMonth]);
 
   return (
     <>
@@ -49,12 +47,7 @@ export default function CalendarNavigation() {
         }}
       >
         <wbr />
-        <svg
-          className="fill-current text-gray-400 dark:text-gray-500"
-          width="14"
-          height="14"
-          viewBox="0 0 14 14"
-        >
+        <svg className="fill-current text-gray-400 dark:text-gray-500" width="14" height="14" viewBox="0 0 14 14">
           <path d="M6.6 13.4L5.2 12l4-4-4-4 1.4-1.4L12 8z" />
         </svg>
       </button>

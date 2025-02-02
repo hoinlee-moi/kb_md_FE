@@ -3,8 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./utility.css";
 import "aos/dist/aos.css";
+
 import AOSProvider from "@/components/aosInit";
 import TabBar from "@/components/tabBar";
+import { UserIdContextProvider } from "@/hooks/userId-context";
 
 const kbFonts = localFont({
   src: [
@@ -26,12 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${kbFonts.className} antialiased min-h-screen max-w-[620px] mx-auto bg-slate-50`}
-      >
+      <body className={`${kbFonts.className} antialiased min-h-screen max-w-[620px] mx-auto bg-slate-50`}>
         <AOSProvider>
-          {children}
-
+          <UserIdContextProvider>
+            <h1 className="text-lg font-bold px-3 pt-2">
+              Fund<span className="text-kb-main">Y</span>
+            </h1>
+            {children}
+          </UserIdContextProvider>
           <TabBar />
         </AOSProvider>
       </body>

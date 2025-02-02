@@ -32,7 +32,6 @@ export default function CalendarTable({ events }: { events: Event[] }) {
 
   useEffect(() => {
     renderDays();
-    console.log(events);
     //events 새로 받기
   }, [currentMonth]);
 
@@ -43,12 +42,8 @@ export default function CalendarTable({ events }: { events: Event[] }) {
         {dayNames.map((day) => {
           return (
             <div className="px-1 py-1.5" key={day}>
-              <div className="text-gray-500 text-xs font-medium text-center lg:hidden">
-                {day.substring(0, 3)}
-              </div>
-              <div className="text-gray-500 dark:text-gray-400 text-sm font-medium text-center hidden lg:block">
-                {day}
-              </div>
+              <div className="text-gray-500 text-xs font-medium text-center lg:hidden">{day.substring(0, 3)}</div>
+              <div className="text-gray-500 dark:text-gray-400 text-sm font-medium text-center hidden lg:block">{day}</div>
             </div>
           );
         })}
@@ -59,21 +54,8 @@ export default function CalendarTable({ events }: { events: Event[] }) {
         {/* Diagonal stripes pattern */}
         <svg className="sr-only">
           <defs>
-            <pattern
-              id="stripes"
-              patternUnits="userSpaceOnUse"
-              width="5"
-              height="5"
-              patternTransform="rotate(135)"
-            >
-              <line
-                className="stroke-current text-gray-200 dark:text-gray-700 opacity-50"
-                x1="0"
-                y="0"
-                x2="0"
-                y2="5"
-                strokeWidth="2"
-              />
+            <pattern id="stripes" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(135)">
+              <line className="stroke-current text-gray-200 dark:text-gray-700 opacity-50" x1="0" y="0" x2="0" y2="5" strokeWidth="2" />
             </pattern>
           </defs>
         </svg>
@@ -81,11 +63,7 @@ export default function CalendarTable({ events }: { events: Event[] }) {
         {startingBlankDays.map((blankday) => {
           return (
             <div className="bg-gray-50 dark:bg-gray-800 h-14" key={blankday}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <rect width="100%" height="100%" fill="url(#stripes)" />
               </svg>
             </div>
@@ -94,10 +72,7 @@ export default function CalendarTable({ events }: { events: Event[] }) {
         {/* Days of the current month */}
         {daysInMonth.map((day) => {
           return (
-            <div
-              className="relative bg-white dark:bg-gray-800 h-14 overflow-hidden"
-              key={day}
-            >
+            <div className="relative bg-white dark:bg-gray-800 h-14 overflow-hidden" key={day}>
               <div className="h-full flex flex-col justify-between">
                 <div className="text-[9px] px-[2px] mt-[5px] font-bold w-full flex flex-col justify-center">
                   <span className="w-full text-blue-500">{`3,245,600`}</span>
@@ -122,11 +97,7 @@ export default function CalendarTable({ events }: { events: Event[] }) {
         {endingBlankDays.map((blankday) => {
           return (
             <div className="bg-gray-50 dark:bg-gray-800 h-14" key={blankday}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <rect width="100%" height="100%" fill="url(#stripes)" />
               </svg>
             </div>

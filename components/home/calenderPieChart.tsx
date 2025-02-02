@@ -19,7 +19,7 @@ export default function CalenderPieChart() {
 }
 
 const chartData = {
-  labels: ["Cash", "Commodities", "Bonds", "Stock"],
+  labels: ["저축", "습관", "소비", "기타"],
   datasets: [
     {
       label: "Sessions By Device",

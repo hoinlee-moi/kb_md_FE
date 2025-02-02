@@ -1,0 +1,51 @@
+//api type
+
+type GetRewardList = {
+  id: number;
+  name: string;
+  category: string;
+  goal: number;
+  points: number;
+};
+
+type GetUserRewardState = {
+  rewardId: number;
+  progress: number;
+  status: string;
+};
+
+type GetSavingGoalInfo = {
+  name: string;
+  targetAmount: number;
+  savedAmount: number;
+};
+
+type getCategoryPie = {
+  category: string;
+  totalAmount: number;
+};
+
+type GetMonthlyExTotal = {
+  totalIncome: number;
+  totalExpense: number;
+  totalSum: number;
+};
+
+type GetMonthlyPieEx = {
+  totalIncome: number;
+  totalExpense: number;
+};
+
+type GetMonthTransData = { date: string; totalAmount: number };
+
+type GetRecentTrans = {
+  amount: number;
+  category: string;
+  date: string;
+  type: string;
+  content: string;
+};
+
+type GetTotalAccBal = {
+  userBalance: number;
+};
