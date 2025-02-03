@@ -31,7 +31,7 @@ export default function RewardItem({
       <p className="w-full font-semibold text-ellipsis text-nowrap overflow-hidden mr-1">
         {name}
       </p>
-      {status === "in_progress" && progress !== goal ? (
+      {status === "in_progress" && progress < goal ? (
         <p className=" text-nowrap">
           ( {progress} / {goal} )
         </p>

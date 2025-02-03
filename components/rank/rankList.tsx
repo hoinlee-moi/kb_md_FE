@@ -36,7 +36,6 @@ export default function RankList() {
     // setList(sortRank);
     // setMyRank(Dummy[1]);
   }, [category]);
-
   return (
     <div className="flex flex-col w-full space-y-2">
       {list.map((data, idx) => {
@@ -45,7 +44,7 @@ export default function RankList() {
         }
         return <RankItem data={{ ...data, rank: idx + 1 }} key={idx} />;
       })}
-      {myRank.rank > 10 && <MyRank {...myRank} />}
+      {myRank.rank > list.length && <MyRank {...myRank} />}
     </div>
   );
 }
