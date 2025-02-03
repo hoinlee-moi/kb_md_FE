@@ -21,7 +21,7 @@ export default function RewardList() {
             (innerV) => innerV.rewardId === outerV.id
           );
           if (findVal) return { ...findVal, ...outerV };
-          return { ...outerV, rewardId: 0, progress: 0, status: "" };
+          return { ...outerV, rewardId: 0, progress: 0, status: "in_progress" };
         });
         console.log(rewardList);
         setList(rewardList);
@@ -34,7 +34,7 @@ export default function RewardList() {
   useEffect(() => {
     setList((prev) =>
       prev.sort((a) => {
-        if (desc) {
+        if (!desc) {
           if (a.status === "completed") return 1;
           if (a.status === "in_progress") return -1;
           return 0;
