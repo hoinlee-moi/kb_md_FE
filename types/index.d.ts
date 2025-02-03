@@ -69,4 +69,7 @@ type GetRankData = {
   score: number;
 };
 
-type GetRankResponDate = [GetRankData[], { rank: number; score: number }];
+type GetRankResponDate = [
+  GetRankData[],
+  { rank: number; score: number; region: string }
+];

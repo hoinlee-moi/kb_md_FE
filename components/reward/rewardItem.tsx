@@ -2,6 +2,7 @@
 
 import { claimReward } from "@/actions/api";
 import { Button } from "../ui/button";
+import { useCategory } from "@/hooks/category.context";
 import { useRouter } from "next/navigation";
 
 type PropsType = {
@@ -11,6 +12,7 @@ type PropsType = {
 export default function RewardItem({
   data: { goal, name, rewardId, status, progress },
 }: PropsType) {
+  const { category, setCategory } = useCategory();
   const router = useRouter();
   // const [state, setState] = useState(rewardState);
 
@@ -22,6 +24,8 @@ export default function RewardItem({
     try {
       await claimReward(rewardId);
       router.refresh();
+      // location.reload();
+      // setCategory(category);
     } catch (error) {
       console.error(error);
     }

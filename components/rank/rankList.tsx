@@ -9,9 +9,14 @@ import { useCategory } from "@/hooks/category.context";
 export default function RankList() {
   const { category } = useCategory();
   const [list, setList] = useState<GetRankData[]>([]);
-  const [myRank, setMyRank] = useState<{ rank: number; score: number }>({
+  const [myRank, setMyRank] = useState<{
+    rank: number;
+    score: number;
+    region: string;
+  }>({
     rank: 0,
     score: 0,
+    region: "",
   });
 
   useEffect(() => {
@@ -40,7 +45,14 @@ export default function RankList() {
     <div className="flex flex-col w-full space-y-2">
       {list.map((data, idx) => {
         if (myRank.rank === idx + 1) {
-          return <MyRank score={myRank.score} rank={myRank.rank} key={idx} />;
+          return (
+            <MyRank
+              score={myRank.score}
+              rank={myRank.rank}
+              region={data.region}
+              key={idx}
+            />
+          );
         }
         return <RankItem data={{ ...data, rank: idx + 1 }} key={idx} />;
       })}
