@@ -1,9 +1,15 @@
 "use client";
 import { useCategory } from "@/hooks/category.context";
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 
 export default function CategoryTab() {
   const { category, setCategory } = useCategory();
+
+  useEffect(() => {
+    setCategory("nationwide");
+  }, []);
+
   return (
     <div className=" flex justify-between w-3/4 mt-2">
       <div className="flex flex-wrap items-center -m-1.5">

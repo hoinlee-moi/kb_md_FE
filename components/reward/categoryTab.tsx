@@ -1,10 +1,13 @@
 "use client";
 import { useCategory } from "@/hooks/category.context";
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 
 export default function CategoryTab() {
   const { category, setCategory } = useCategory();
-
+  useEffect(() => {
+    setCategory("saving");
+  }, []);
   return (
     <div className="relative w-full">
       <div

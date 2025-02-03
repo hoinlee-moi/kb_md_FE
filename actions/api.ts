@@ -39,21 +39,27 @@ export const claimReward = async (rewardId: number) => {
 export const getRewardListByCategory = async (
   category: string
 ): Promise<GetRewardList[]> => {
-  const res = await fetch(`${URL}/api/rewards/list/${category}`);
+  const res = await fetch(`${URL}/api/rewards/list/${category}`, {
+    cache: "no-store",
+  });
 
   return res.json();
 };
 
 //사용자 리워드 포인트 조회
 export const getRewardPoints = async (): Promise<number> => {
-  const res = await fetch(`${URL}/api/rewards/points/${userId}`);
+  const res = await fetch(`${URL}/api/rewards/points/${userId}`, {
+    cache: "no-store",
+  });
 
   return res.json();
 };
 
 //사용자의 리워드 진행 상태 조회
 export const getUserRewardStatus = async (): Promise<GetUserRewardState[]> => {
-  const res = await fetch(`${URL}/api/rewards/personal/${userId}`);
+  const res = await fetch(`${URL}/api/rewards/personal/${userId}`, {
+    cache: "no-store",
+  });
 
   return res.json();
 };
@@ -110,7 +116,10 @@ export const getCategoryExpenseChart = async (
   month: number
 ): Promise<getCategoryPie[] | void> => {
   const res = await fetch(
-    `${URL}/api/transactions/category-summary/${userId}/${month}`
+    `${URL}/api/transactions/category-summary/${userId}/${month}`,
+    {
+      cache: "no-store",
+    }
   );
   if (res.ok) return res.json();
 };
@@ -119,7 +128,12 @@ export const getCategoryExpenseChart = async (
 export const getMonthlyIncomeExpenseChart = async (
   month: number
 ): Promise<GetMonthlyPieEx | void> => {
-  const res = await fetch(`${URL}/api/transactions/summary/${userId}/${month}`);
+  const res = await fetch(
+    `${URL}/api/transactions/summary/${userId}/${month}`,
+    {
+      cache: "no-store",
+    }
+  );
   if (res.ok) return res.json();
 };
 
@@ -139,7 +153,10 @@ export const getMonthlyTransactionData = async (
   month: number
 ): Promise<GetMonthTransData[] | void> => {
   const res = await fetch(
-    `${URL}/api/transactions/calendar/${userId}/${month}`
+    `${URL}/api/transactions/calendar/${userId}/${month}`,
+    {
+      cache: "no-store",
+    }
   );
   if (res.ok) return res.json();
 };

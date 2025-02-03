@@ -22,19 +22,28 @@ export default function PieChart({ data }: PropsType) {
       options: {
         layout: {
           padding: {
-            top: 4,
-            bottom: 4,
-            left: 24,
-            right: 24,
+            top: 8,
+            bottom: 8,
+            left: 34,
+            right: 34,
           },
         },
         animation: { duration: 200 },
         plugins: {
           datalabels: {
-            formatter: (v) => `${v}%`,
-            color: "#fff",
-            anchor: "center",
-            align: "center",
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            formatter: (value: number, context: any) => {
+              // 현재 데이터셋의 모든 값 배열 가져오기
+              const dataArr = context.chart.data.datasets[0].data as number[];
+              // 전체 합계 계산
+              const sum = dataArr.reduce((acc, cur) => acc + cur, 0);
+              // 백분율 계산 (소수점 둘째 자리까지)
+              const percentage = ((value / sum) * 100).toFixed() + "%";
+              return percentage;
+            },
+            color: "#000",
+            anchor: "end",
+            align: "end",
           },
           legend: {
             position: "bottom",

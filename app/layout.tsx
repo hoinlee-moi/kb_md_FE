@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <AOSProvider>
           <h1 className="text-lg font-bold px-3 pt-2">
-            <span className="text-kb-main">KB</span>Bank
+            <span className="text-kb-main">KB</span>국민은행
           </h1>
           {children}
           <TabBar />
