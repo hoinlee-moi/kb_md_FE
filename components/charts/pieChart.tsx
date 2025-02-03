@@ -3,7 +3,9 @@
 import { Chart } from "chart.js/auto";
 import { ChartData } from "chart.js";
 import { useEffect, useRef } from "react";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
+Chart.register(ChartDataLabels);
 type PropsType = {
   data: ChartData;
 };
@@ -28,6 +30,12 @@ export default function PieChart({ data }: PropsType) {
         },
         animation: { duration: 200 },
         plugins: {
+          datalabels: {
+            formatter: (v) => `${v}% `,
+            color: "#fff",
+            anchor: "center",
+            align: "center",
+          },
           legend: {
             position: "bottom",
             align: "center",

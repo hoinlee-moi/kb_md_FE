@@ -27,7 +27,7 @@ export const getUserKBScore = async (): Promise<number> => {
 };
 
 // 특정 리워드 수령 PUT
-export const claimReward = async (rewardId: string): Promise<string> => {
+export const claimReward = async (rewardId: number): Promise<string> => {
   const res = await fetch(`${URL}/api/rewards/claim/${userId}/${rewardId}`);
 
   return res.json();
@@ -105,11 +105,20 @@ export const updateSavingGoal = async (data: {
 
 // 파이 차트 카테고리별 비율 조회
 export const getCategoryExpenseChart = async (
-  month: string
+  month: number
 ): Promise<getCategoryPie[]> => {
   const res = await fetch(
     `${URL}/api/transactions/category-summary/${userId}/${month}`
   );
+
+  return res.json();
+};
+
+// 파이 차트 지출 수입 조회
+export const getMonthlyIncomeExpenseChart = async (
+  month: number
+): Promise<GetMonthlyPieEx> => {
+  const res = await fetch(`${URL}/api/transactions/summary/${userId}/${month}`);
 
   return res.json();
 };
@@ -125,18 +134,9 @@ export const getMonthlyIncomeAndExpense = async (
   return res.json();
 };
 
-// 파이 차트 지출 수입 조회
-export const getMonthlyIncomeExpenseChart = async (
-  month: string
-): Promise<GetMonthlyPieEx> => {
-  const res = await fetch(`${URL}/api/transactions/summary/${userId}/${month}`);
-
-  return res.json();
-};
-
 // 달력 데이터 조회
 export const getMonthlyTransactionData = async (
-  month: string
+  month: number
 ): Promise<GetMonthTransData[]> => {
   const res = await fetch(
     `${URL}/api/transactions/calendar/${userId}/${month}`

@@ -1,8 +1,31 @@
+"use client";
+import { useEffect, useState } from "react";
 import CalendarNavigation from "./calendar-navigation";
 import CalendarTable from "./calendar-table";
 import CalendarTitle from "./title";
+import { CalendarProperties } from "./calendar-properties";
+import { getMonthlyTransactionData } from "@/actions/api";
 
 export default function Calender() {
+  const { currentMonth } = CalendarProperties();
+  const [data, setData] = useState<GetMonthTransData[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await getMonthlyTransactionData(currentMonth);
+        setData(
+          res.map((v) => ({
+            date: `${new Date(v.date).getDate()}`,
+            totalAmount: v.totalAmount,
+          }))
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [currentMonth]);
+
   return (
     <>
       <div className="px-4 py-8 w-full max-w-[96rem] mx-auto">
@@ -17,27 +40,8 @@ export default function Calender() {
           </div>
         </div>
 
-        <CalendarTable events={events} />
+        <CalendarTable events={data} />
       </div>
     </>
   );
 }
-
-const events = [
-  {
-    eventStart: new Date(
-      new Date().getFullYear(),
-      new Date().getMonth() - 1,
-      8,
-      3
-    ),
-    eventEnd: new Date(
-      new Date().getFullYear(),
-      new Date().getMonth() - 1,
-      8,
-      7
-    ),
-    eventName: "⛱️ Relax for 2 at Marienbad",
-    eventColor: "indigo",
-  },
-];

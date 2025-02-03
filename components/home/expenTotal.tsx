@@ -8,9 +8,9 @@ import { useEffect, useState } from "react";
 
 export default function ExpenTotal() {
   const [data, setData] = useState({
-    monthSum: "215",
-    total: "32",
-    lastCurSum: 1355,
+    monthSum: "0",
+    total: "0",
+    lastCurSum: 0,
   });
   const date = new Date();
   const month = date.getMonth() + 1;

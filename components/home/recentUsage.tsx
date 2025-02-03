@@ -1,12 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Icon from "../ui/icon";
-import { useUserId } from "@/hooks/userId-context";
 import { useEffect, useState } from "react";
 import { getRecentTransactions } from "@/actions/api";
 
 export default function RecentUsage() {
-  const { userId } = useUserId();
   const [list, setList] = useState<GetRecentTrans[]>();
 
   useEffect(() => {
@@ -57,41 +55,3 @@ export default function RecentUsage() {
     </div>
   );
 }
-
-const DUMMY = [
-  {
-    amount: 34000,
-    category: "음식",
-    date: "2024.12.11",
-    type: "지출",
-    content: "네이버페이충전",
-  },
-  {
-    amount: 1500000,
-    category: "근로",
-    date: "2025.01.15",
-    type: "수입",
-    content: "수당",
-  },
-  {
-    amount: 17000,
-    category: "음식",
-    date: "2024.12.11",
-    type: "지출",
-    content: "우아한형제들",
-  },
-  {
-    amount: 144000,
-    category: "패션",
-    date: "2024.12.11",
-    type: "지출",
-    content: "헥토파이낸셜",
-  },
-  {
-    amount: 1500,
-    category: "교통",
-    date: "2024.12.11",
-    type: "지출",
-    content: "티머니충전",
-  },
-];
