@@ -27,14 +27,12 @@ export const getUserKBScore = async (): Promise<number> => {
 };
 
 // 특정 리워드 수령 PUT
-export const claimReward = async (rewardId: number): Promise<string> => {
-  const res = await fetch(`${URL}/api/rewards/claim/${userId}/${rewardId}`, {
+export const claimReward = async (rewardId: number) => {
+  await fetch(`${URL}/api/rewards/claim/${userId}/${rewardId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     cache: "no-store",
   });
-
-  return res.json();
 };
 
 //카테고리별 리워드 목록 조회
