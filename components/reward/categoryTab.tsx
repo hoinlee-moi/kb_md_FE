@@ -17,7 +17,7 @@ export default function CategoryTab() {
             className={cn("block pb-3  whitespace-nowrap ", {
               "text-kb-main border-b-2 border-kb-main": category === "savings",
             })}
-            onClick={() => setCategory("savings")}
+            onClick={() => setCategory("saving")}
           >
             저축
           </button>
@@ -27,7 +27,7 @@ export default function CategoryTab() {
             className={cn("block pb-3  whitespace-nowrap ", {
               "text-kb-main border-b-2 border-kb-main": category === "habits",
             })}
-            onClick={() => setCategory("habits")}
+            onClick={() => setCategory("habit")}
           >
             습관
           </button>
@@ -38,7 +38,7 @@ export default function CategoryTab() {
               "text-kb-main border-b-2 border-kb-main":
                 category === "consumption",
             })}
-            onClick={() => setCategory("consumption")}
+            onClick={() => setCategory("spending")}
           >
             소비
           </button>

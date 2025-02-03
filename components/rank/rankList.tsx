@@ -35,7 +35,7 @@ export default function RankList() {
     // const sortRank = Dummy[0].sort((a, b) => b.score - a.score);
     // setList(sortRank);
     // setMyRank(Dummy[1]);
-  }, []);
+  }, [category]);
 
   return (
     <div className="flex flex-col w-full space-y-2">

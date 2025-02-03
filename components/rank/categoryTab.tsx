@@ -13,10 +13,10 @@ export default function CategoryTab() {
               className={cn(
                 "btn bg-white border-gray-200 hover:bg-gray-50 text-gray-600 rounded-s-sm px-[5px] py-[2px]",
                 {
-                  "text-kb-main bg-kb-gray": category === "nation",
+                  "text-kb-main bg-kb-gray": category === "nationwide",
                 }
               )}
-              onClick={() => setCategory("nationwides")}
+              onClick={() => setCategory("nationwide")}
             >
               전국
             </button>

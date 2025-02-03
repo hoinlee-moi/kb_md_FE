@@ -8,7 +8,6 @@ export default function PointRullet({ target, loopCount = 20 }: PropsType) {
   const [countArr, setCountArr] = useState([0, 0]);
 
   useEffect(() => {
-    console.log(target, countArr);
     const inter = setInterval(() => {
       setCountArr(([count, loop]) => {
         if (count === target && loop > loopCount) {

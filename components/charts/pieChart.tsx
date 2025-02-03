@@ -31,7 +31,7 @@ export default function PieChart({ data }: PropsType) {
         animation: { duration: 200 },
         plugins: {
           datalabels: {
-            formatter: (v) => `${v}% `,
+            formatter: (v) => `${v}%`,
             color: "#fff",
             anchor: "center",
             align: "center",

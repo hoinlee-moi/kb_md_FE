@@ -17,6 +17,7 @@ export default function PieChartSection() {
       try {
         const totRes = await getMonthlyIncomeExpenseChart(currentMonth);
         const cateRes = await getCategoryExpenseChart(currentMonth);
+        console.log("curMonth>>>", currentMonth);
         console.log("piechart>>>", totRes, cateRes);
         setTotData({
           labels: ["지출", "수입"],
