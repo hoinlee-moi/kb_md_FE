@@ -108,21 +108,19 @@ export const updateSavingGoal = async (data: {
 // 파이 차트 카테고리별 비율 조회
 export const getCategoryExpenseChart = async (
   month: number
-): Promise<getCategoryPie[]> => {
+): Promise<getCategoryPie[] | void> => {
   const res = await fetch(
     `${URL}/api/transactions/category-summary/${userId}/${month}`
   );
-
-  return res.json();
+  if (res.ok) return res.json();
 };
 
 // 파이 차트 지출 수입 조회
 export const getMonthlyIncomeExpenseChart = async (
   month: number
-): Promise<GetMonthlyPieEx> => {
+): Promise<GetMonthlyPieEx | void> => {
   const res = await fetch(`${URL}/api/transactions/summary/${userId}/${month}`);
-
-  return res.json();
+  if (res.ok) return res.json();
 };
 
 // 당월 지출 수입 합계 조회
@@ -139,12 +137,11 @@ export const getMonthlyIncomeAndExpense = async (
 // 달력 데이터 조회
 export const getMonthlyTransactionData = async (
   month: number
-): Promise<GetMonthTransData[]> => {
+): Promise<GetMonthTransData[] | void> => {
   const res = await fetch(
     `${URL}/api/transactions/calendar/${userId}/${month}`
   );
-
-  return res.json();
+  if (res.ok) return res.json();
 };
 
 // 최근 거래 내역 조회

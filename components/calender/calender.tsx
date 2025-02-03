@@ -14,12 +14,14 @@ export default function Calender() {
     (async () => {
       try {
         const res = await getMonthlyTransactionData(currentMonth);
-        setData(
-          res.map((v) => ({
-            date: `${new Date(v.date).getDate()}`,
-            totalAmount: v.totalAmount,
-          }))
-        );
+        if (res) {
+          setData(
+            res.map((v) => ({
+              date: `${new Date(v.date).getDate()}`,
+              totalAmount: v.totalAmount,
+            }))
+          );
+        }
       } catch (error) {
         console.error(error);
       }

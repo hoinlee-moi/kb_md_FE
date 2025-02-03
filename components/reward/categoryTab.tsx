@@ -15,7 +15,7 @@ export default function CategoryTab() {
         <li className="mr-6 last:mr-0 first:pl-4 last:pr-4">
           <button
             className={cn("block pb-3  whitespace-nowrap ", {
-              "text-kb-main border-b-2 border-kb-main": category === "savings",
+              "text-kb-main border-b-2 border-kb-main": category === "saving",
             })}
             onClick={() => setCategory("saving")}
           >
@@ -25,7 +25,7 @@ export default function CategoryTab() {
         <li className="mr-6 last:mr-0 first:pl-4 last:pr-4">
           <button
             className={cn("block pb-3  whitespace-nowrap ", {
-              "text-kb-main border-b-2 border-kb-main": category === "habits",
+              "text-kb-main border-b-2 border-kb-main": category === "habit",
             })}
             onClick={() => setCategory("habit")}
           >
@@ -35,8 +35,7 @@ export default function CategoryTab() {
         <li className="mr-6 last:mr-0 first:pl-4 last:pr-4">
           <button
             className={cn("block pb-3  whitespace-nowrap ", {
-              "text-kb-main border-b-2 border-kb-main":
-                category === "consumption",
+              "text-kb-main border-b-2 border-kb-main": category === "spending",
             })}
             onClick={() => setCategory("spending")}
           >
