@@ -39,11 +39,12 @@ export default function RecentUsage() {
             </div>
             <div>
               <p
-                className={cn(" font-bold text-warning text-nowrap", {
-                  "text-blue-500": type === "수입",
+                className={cn("font-bold text-warning text-nowrap", {
+                  "text-blue-500": type === "income",
+                  "text-warning": type === "expense",
                 })}
               >
-                {`${type === "수입" ? "+" : "-"} ${amount.toLocaleString()}`}
+                {`${type === "income" ? "+" : "-"} ${amount.toLocaleString()}`}
               </p>
             </div>
           </div>
