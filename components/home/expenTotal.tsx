@@ -1,21 +1,26 @@
 "use client";
 
-import { getMonthlyIncomeAndExpense, getTotalAccountBalance } from "@/actions/api";
-import { useUserId } from "@/hooks/userId-context";
+import {
+  getMonthlyIncomeAndExpense,
+  getTotalAccountBalance,
+} from "@/actions/api";
 import { useEffect, useState } from "react";
 
 export default function ExpenTotal() {
-  const { userId } = useUserId();
-  const [data, setData] = useState({ monthSum: "215", total: "32", lastCurSum: 1355 });
+  const [data, setData] = useState({
+    monthSum: "215",
+    total: "32",
+    lastCurSum: 1355,
+  });
   const date = new Date();
   const month = date.getMonth() + 1;
 
   useEffect(() => {
     (async () => {
       try {
-        const lastMonth = await getMonthlyIncomeAndExpense(userId, String(month - 1));
-        const curMonth = await getMonthlyIncomeAndExpense(userId, String(month));
-        const totalAcc = await getTotalAccountBalance(userId);
+        const lastMonth = await getMonthlyIncomeAndExpense(String(month - 1));
+        const curMonth = await getMonthlyIncomeAndExpense(String(month));
+        const totalAcc = await getTotalAccountBalance();
 
         setData({
           monthSum: String(curMonth.totalSum),
@@ -41,7 +46,8 @@ export default function ExpenTotal() {
         </div>
       </div>
       <p className="mt-2">
-        지난달 보다 {Math.abs(data.lastCurSum)}원 더 {Math.sign(data.lastCurSum) > 0 ? "아끼고" : "쓰고"} 있어요
+        지난달 보다 {Math.abs(data.lastCurSum)}원 더{" "}
+        {Math.sign(data.lastCurSum) > 0 ? "아끼고" : "쓰고"} 있어요
       </p>
     </div>
   );

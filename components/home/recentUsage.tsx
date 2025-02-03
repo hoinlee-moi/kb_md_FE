@@ -2,21 +2,38 @@
 import { cn } from "@/lib/utils";
 import Icon from "../ui/icon";
 import { useUserId } from "@/hooks/userId-context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getRecentTransactions } from "@/actions/api";
 
 export default function RecentUsage() {
   const { userId } = useUserId();
-  const [list, setList] = useState();
+  const [list, setList] = useState<GetRecentTrans[]>();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await getRecentTransactions();
+        setList(res);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   return (
     <div>
       {/* <p className="text-lg font-bold border-b-2 border-black">최근 이용내역</p> */}
       <div className="flex flex-col space-y-1 ">
-        {DUMMY.map(({ amount, date, type, content }, idx) => (
+        {list?.map(({ amount, date, type, content }, idx) => (
           // category별 이미지 변환 생각
           <div className="flex items-center flex-nowrap" key={idx}>
             <div>
-              <Icon alt="" src="/assets/moneyicon.jpg" className="" imgSize="32" />
+              <Icon
+                alt=""
+                src="/assets/moneyicon.jpg"
+                className=""
+                imgSize="32"
+              />
             </div>
             <div className=" px-2 w-full font-semibold">
               <p className="">{content}</p>

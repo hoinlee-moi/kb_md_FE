@@ -6,7 +6,7 @@ import { getNationalRanking, getRegionalRanking } from "@/actions/api";
 
 export default function RankingPoint({ segmen }: { segmen: string }) {
   const { userId } = useUserId();
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(8000);
 
   //   useEffect(() => {
   //     (async () => {

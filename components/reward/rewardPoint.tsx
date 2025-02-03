@@ -6,7 +6,7 @@ import { getRewardPoints } from "@/actions/api";
 
 export default function RewardPoint() {
   const { userId } = useUserId();
-  const [point, setPoint] = useState(0);
+  const [point, setPoint] = useState(354);
   //   useEffect(() => {
   //     (async () => {
   //       try {
