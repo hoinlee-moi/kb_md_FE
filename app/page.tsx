@@ -22,7 +22,7 @@ export default async function Home() {
       <section data-aos="fade-up" className="mb-5">
         <CalenderPieChart />
       </section>
-      <section className="px-4 mx-4 mt-3 pt-5 bg-white shadow-sm rounded-xl" data-aos="fade-up" data-aos-delay="100">
+      <section className="px-4 mx-4 mt-3 pt-1 bg-white shadow-sm rounded-xl" data-aos="fade-up" data-aos-delay="100">
         <TargetBankSwiper />
       </section>
       <h2 className="text-xl font-bold pl-5 mt-3" data-aos="fade-up" data-aos-delay="100">

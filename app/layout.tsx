@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 
 import AOSProvider from "@/components/aosInit";
 import TabBar from "@/components/tabBar";
+import ResetButton from "@/components/home/resetButton";
 
 const kbFonts = localFont({
   src: [
@@ -27,13 +28,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${kbFonts.className} antialiased min-h-screen max-w-[620px] mx-auto bg-slate-50`}
-      >
+      <body className={`${kbFonts.className} antialiased min-h-screen max-w-[620px] mx-auto bg-slate-50`}>
         <AOSProvider>
-          <h1 className="text-lg font-bold px-3 pt-2">
-            <span className="text-kb-main">KB</span>국민은행
-          </h1>
+          <div className="flex justify-between">
+            <h1 className="inline text-lg font-bold px-3 pt-2">
+              <span className="text-kb-main">KB</span>국민은행
+            </h1>
+            <div className="px-3 pt-3">
+              <ResetButton />
+            </div>
+          </div>
           {children}
           <TabBar />
         </AOSProvider>
