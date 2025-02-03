@@ -15,11 +15,11 @@ export default function RankList() {
   });
 
   useEffect(() => {
-    const cate = category === "" ? "nation" : category;
+    const cate = category === "" ? "nationwide" : category;
     (async () => {
       try {
         let res: GetRankResponDate;
-        if (cate === "nation") {
+        if (cate === "nationwide") {
           res = await getNationalRanking();
         } else {
           res = await getRegionalRanking();

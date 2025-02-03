@@ -20,8 +20,8 @@ export default function RewardItem({
 
   const depositSaving = async () => {
     try {
-      const res = await claimReward(rewardId);
-      if (res) router.refresh();
+      await claimReward(rewardId);
+      router.refresh();
     } catch (error) {
       console.error(error);
     }

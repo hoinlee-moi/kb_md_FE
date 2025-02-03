@@ -23,6 +23,7 @@ export default function RewardList() {
           if (findVal) return { ...findVal, ...outerV };
           return { ...outerV, rewardId: 0, progress: 0, status: "" };
         });
+        console.log(rewardList);
         setList(rewardList);
       } catch (error) {
         console.error("카테고리 리스트 에러", error);
@@ -33,9 +34,15 @@ export default function RewardList() {
   useEffect(() => {
     setList((prev) =>
       prev.sort((a) => {
-        if (a.status === "완료") return 1;
-        if (a.status === "진행중") return -1;
-        return 0;
+        if (desc) {
+          if (a.status === "completed") return 1;
+          if (a.status === "in_progress") return -1;
+          return 0;
+        } else {
+          if (a.status === "completed") return -1;
+          if (a.status === "in_progress") return 1;
+          return 0;
+        }
       })
     );
   }, [desc]);

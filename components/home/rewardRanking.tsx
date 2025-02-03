@@ -25,7 +25,7 @@ export default async function RewardRanking() {
       <p className="text-3xl mt-2">
         <i>{point}</i> 점
       </p>
-      <Link href="/reward/saving">
+      <Link href="/reward">
         <Button
           className="bg-kb-main mt-3 text-kb-gray font-semibold"
           size="sm"

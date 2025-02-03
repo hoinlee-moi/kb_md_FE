@@ -26,7 +26,7 @@ export default async function KbSocre() {
       <p className="text-3xl mt-2">
         <i>{score} </i> 점
       </p>
-      <Link href="/rank/nation">
+      <Link href="/rank">
         <Button
           className="bg-kb-main mt-3 text-kb-gray font-semibold"
           size="sm"
