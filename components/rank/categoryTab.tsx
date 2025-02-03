@@ -16,7 +16,7 @@ export default function CategoryTab() {
                   "text-kb-main bg-kb-gray": category === "nation",
                 }
               )}
-              onClick={() => setCategory("nation")}
+              onClick={() => setCategory("nationwides")}
             >
               전국
             </button>

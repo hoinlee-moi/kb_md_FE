@@ -15,15 +15,17 @@ export default function RankList() {
   });
 
   useEffect(() => {
+    const cate = category === "" ? "nation" : category;
     (async () => {
       try {
         let res: GetRankResponDate;
-        if (category === "region") {
+        if (cate === "nation") {
           res = await getNationalRanking();
         } else {
           res = await getRegionalRanking();
         }
         const sortRank = res[0].sort((a, b) => b.score - a.score);
+        console.log("rank", res);
         setList(sortRank);
         setMyRank(res[1]);
       } catch (error) {

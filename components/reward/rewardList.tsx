@@ -12,7 +12,9 @@ export default function RewardList() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await getRewardListByCategory(category);
+        const res = await getRewardListByCategory(
+          category === "" ? "saving" : category
+        );
         const listStates = await getUserRewardStatus();
         const rewardList = res.map((outerV) => {
           const findVal = listStates.find(

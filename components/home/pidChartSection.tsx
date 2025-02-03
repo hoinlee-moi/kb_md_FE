@@ -9,15 +9,15 @@ import {
 
 export default function PieChartSection() {
   const { currentMonth } = CalendarProperties();
-  const [totData, setTotData] = useState<ChartData>(CHARTDUMMY);
-  const [cateData, setCateData] = useState<ChartData>(CHARTDUMMY);
+  const [totData, setTotData] = useState<ChartData>();
+  const [cateData, setCateData] = useState<ChartData>();
 
   useEffect(() => {
     (async () => {
       try {
         const totRes = await getMonthlyIncomeExpenseChart(currentMonth);
         const cateRes = await getCategoryExpenseChart(currentMonth);
-
+        console.log("piechart>>>", totRes, cateRes);
         setTotData({
           labels: ["지출", "수입"],
           datasets: [
@@ -69,15 +69,15 @@ export default function PieChartSection() {
   );
 }
 
-const CHARTDUMMY = {
-  labels: ["저축", "습관", "소비", "기타"],
-  datasets: [
-    {
-      label: "",
-      data: [12, 13, 10, 65],
-      backgroundColor: ["#3EC972", "#F7CD4C", "#67BFFF", "#8470FF"],
-      hoverBackgroundColor: ["#3EC972", "#F0BB33", "#56B1F3", "#755FF8"],
-      borderWidth: 0,
-    },
-  ],
-};
+// const CHARTDUMMY = {
+//   labels: ["저축", "습관", "소비", "기타"],
+//   datasets: [
+//     {
+//       label: "",
+//       data: [12, 13, 10, 65],
+//       backgroundColor: ["#3EC972", "#F7CD4C", "#67BFFF", "#8470FF"],
+//       hoverBackgroundColor: ["#3EC972", "#F0BB33", "#56B1F3", "#755FF8"],
+//       borderWidth: 0,
+//     },
+//   ],
+// };
