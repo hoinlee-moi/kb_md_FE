@@ -14,10 +14,10 @@ export default function TabBar() {
         <Link href="/">
           <HomeSvg fill={pathname === ""} />
         </Link>
-        <Link href="/rank/nation">
+        <Link href="/rank">
           <RankSvg fill={pathname === "rank"} />
         </Link>
-        <Link href="/reward/saving">
+        <Link href="/reward">
           <RewardSvg fill={pathname === "reward"} />
         </Link>
       </div>
