@@ -5,7 +5,12 @@ import { useEffect, useState } from "react";
 import { getRecentTransactions } from "@/actions/api";
 
 export default function RecentUsage() {
+  const [count, setCount] = useState(3);
   const [list, setList] = useState<GetRecentTrans[]>();
+
+  const addPlustListHandler = () => {
+    setCount((prev) => (prev >= setList.length ? prev : prev + 3));
+  };
 
   useEffect(() => {
     (async () => {
@@ -22,7 +27,7 @@ export default function RecentUsage() {
     <div>
       {/* <p className="text-lg font-bold border-b-2 border-black">최근 이용내역</p> */}
       <div className="flex flex-col space-y-1 ">
-        {list?.map(({ amount, date, type, content }, idx) => (
+        {list?.slice(0, count)?.map(({ amount, date, type, content }, idx) => (
           // category별 이미지 변환 생각
           <div className="flex items-center flex-nowrap" key={idx}>
             <div>
@@ -51,7 +56,12 @@ export default function RecentUsage() {
         ))}
       </div>
       <div className="text-center ">
-        <button className="text-slate-700 font-semibold">더보기 {">"}</button>
+        <button
+          onClick={addPlustListHandler}
+          className="text-slate-700 font-semibold"
+        >
+          더보기 {"∨"}
+        </button>
       </div>
     </div>
   );

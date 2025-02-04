@@ -112,6 +112,7 @@ export default function TargetBank({
           setIsOpen={modalHandler}
           name={name}
           targetAmount={targetAmount}
+          goalId={goalId}
         />
       </ModalBasic>
     </div>

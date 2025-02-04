@@ -58,11 +58,6 @@ const DUMMYYOUTUBE = [
     name: "kb2",
   },
   {
-    imgSrc: "https://img.youtube.com/vi/RE5ZczT3JZs/0.jpg",
-    video: "RE5ZczT3JZs",
-    name: "kb3",
-  },
-  {
     imgSrc: "https://img.youtube.com/vi/e7UzG0Ypryk/0.jpg",
     video: "e7UzG0Ypryk",
     name: "kb4",
