@@ -58,29 +58,33 @@ export default function PieChartSection() {
 
   return (
     <>
-      {/* {totData && cateData && ( */}
-      <div className="flex w-full" data-aos="fade-up" data-aos-duration="1000">
-        <div className="w-1/2 h-full">
-          <PieChart data={CHARTDUMMY} />
+      {totData && cateData && (
+        <div
+          className="flex w-full"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <div className="w-1/2 h-full">
+            <PieChart data={totData} />
+          </div>
+          <div className="w-1/2 h-full">
+            <PieChart data={cateData} />
+          </div>
         </div>
-        <div className="w-1/2 h-full">
-          <PieChart data={CHARTDUMMY} />
-        </div>
-      </div>
-      {/* )} */}
+      )}
     </>
   );
 }
 
-const CHARTDUMMY = {
-  labels: ["저축", "습관", "소비", "기타"],
-  datasets: [
-    {
-      label: "",
-      data: [1552, 213, 100, 6515],
-      backgroundColor: ["#3EC972", "#F7CD4C", "#67BFFF", "#8470FF"],
-      hoverBackgroundColor: ["#3EC972", "#F0BB33", "#56B1F3", "#755FF8"],
-      borderWidth: 0,
-    },
-  ],
-};
+// const CHARTDUMMY = {
+//   labels: ["저축", "습관", "소비", "기타"],
+//   datasets: [
+//     {
+//       label: "",
+//       data: [1552, 213, 100, 6515],
+//       backgroundColor: ["#3EC972", "#F7CD4C", "#67BFFF", "#8470FF"],
+//       hoverBackgroundColor: ["#3EC972", "#F0BB33", "#56B1F3", "#755FF8"],
+//       borderWidth: 0,
+//     },
+//   ],
+// };

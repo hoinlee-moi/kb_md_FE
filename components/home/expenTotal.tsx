@@ -38,15 +38,19 @@ export default function ExpenTotal() {
       <div className="flex items-center justify-between ">
         <div className="text-center w-1/2">
           <p>{month}월 수입 지출 합계</p>
-          <p className="font-semibold text-xl text-warning">{data.monthSum}</p>
+          <p className="font-semibold text-xl text-warning">
+            {Number(data.monthSum).toLocaleString()}
+          </p>
         </div>
         <div className="text-center w-1/2">
           <p>계좌 총 잔액</p>
-          <p className="font-semibold text-xl">{data.total}</p>
+          <p className="font-semibold text-xl">
+            {Number(data.total).toLocaleString()}
+          </p>
         </div>
       </div>
       <p className="mt-2">
-        지난달 보다 {Math.abs(data.lastCurSum)}원 더{" "}
+        지난달 보다 {Math.abs(data.lastCurSum).toLocaleString()}원 더{" "}
         {Math.sign(data.lastCurSum) > 0 ? "아끼고" : "쓰고"} 있어요
       </p>
     </div>

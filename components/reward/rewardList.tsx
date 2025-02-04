@@ -14,7 +14,8 @@ export default function RewardList() {
       try {
         const res = await getRewardListByCategory(category);
         const listStates = await getUserRewardStatus();
-        const rewardList = res.map((outerV) => {
+        console.log("res,listStates=>>", res, listStates);
+        const rewardList = res?.map((outerV) => {
           const findVal = listStates.find(
             (innerV) => innerV.rewardId === outerV.id
           );

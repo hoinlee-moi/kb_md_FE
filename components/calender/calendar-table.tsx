@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { CalendarProperties } from "./calendar-properties";
+import { cn } from "@/lib/utils";
 
 export default function CalendarTable({
   events,
@@ -97,8 +98,22 @@ export default function CalendarTable({
               <div className="h-full flex flex-col justify-between">
                 <div className="text-[9px] px-[2px] mt-[5px] font-bold w-full flex flex-col justify-center">
                   {events.find((v) => Number(v.date) === day) && (
-                    <span className="w-full text-blue-500">
-                      {events.find((v) => Number(v.date) === day)?.totalAmount}
+                    <span
+                      className={cn("w-full text-blue-500", {
+                        "text-warning":
+                          Math.sign(
+                            Number(
+                              events.find((v) => Number(v.date) === day)
+                                ?.totalAmount
+                            )
+                          ) > 0
+                            ? false
+                            : true,
+                      })}
+                    >
+                      {Number(
+                        events.find((v) => Number(v.date) === day)?.totalAmount
+                      ).toLocaleString()}
                     </span>
                   )}
                   {/* <span className="w-full text-blue-500">{`3,245,600`}</span> */}
