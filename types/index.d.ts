@@ -28,6 +28,7 @@ type GetUserRewardState = {
 };
 
 type GetSavingGoalInfo = {
+  goalId: number;
   name: string;
   targetAmount: number;
   savedAmount: number;
@@ -70,4 +71,7 @@ type GetRankData = {
   score: number;
 };
 
-type GetRankResponDate = [GetRankData[], { rank: number; score: number; region: string }];
+type GetRankResponDate = [
+  GetRankData[],
+  { rank: number; score: number; region: string }
+];

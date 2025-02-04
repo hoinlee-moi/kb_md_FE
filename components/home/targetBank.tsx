@@ -12,25 +12,29 @@ type PropsType = {
   refet: () => void;
 };
 
-export default function TargetBank({ data: { name, savedAmount, targetAmount }, refet }: PropsType) {
+export default function TargetBank({
+  data: { name, savedAmount, targetAmount, goalId },
+  refet,
+}: PropsType) {
   const [money, setMoney] = useState(savedAmount);
-  const [perSent, setPersent] = useState(+((money / targetAmount) * 100).toFixed());
+  const [perSent, setPersent] = useState(
+    +((money / targetAmount) * 100).toFixed()
+  );
   const [isOpen, setIsOpen] = useState(false);
 
   const persentCal = () => {
     return +((money / targetAmount) * 100).toFixed();
   };
   const depositToSave = async () => {
-    // try {
-    //   //goalId없음
-    //   const res = await depositToSavingGoal("");
-    //   if (res.ok) {
-    //     setMoney((prev) => (prev < targetAmount ? prev + 1000 : prev));
-    //     setPersent(money)
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      const res = await depositToSavingGoal(goalId);
+      if (res.ok) {
+        setMoney((prev) => (prev < targetAmount ? prev + 1000 : prev));
+        setPersent(money);
+      }
+    } catch (error) {
+      console.error(error);
+    }
     setMoney((prev) => (prev < targetAmount ? prev + 1000 : prev));
     setPersent(persentCal());
   };
@@ -52,7 +56,12 @@ export default function TargetBank({ data: { name, savedAmount, targetAmount }, 
   return (
     <div className="flex pb-5">
       <div className="w-[80px] h-[80px] relative">
-        <Image src={`/assets/character${setImage()}.png`} alt="" sizes="80px" fill />
+        <Image
+          src={`/assets/character${setImage()}.png`}
+          alt=""
+          sizes="80px"
+          fill
+        />
       </div>
       <div className="flex w-full flex-col justify-evenly">
         <div className="flex justify-between items-center">
@@ -66,25 +75,44 @@ export default function TargetBank({ data: { name, savedAmount, targetAmount }, 
             >
               {money === targetAmount ? "완료!" : "동전저금"}
             </Button>
-            <Button size="sm" className="bg-kb-gray px-2 py-[2px]" onClick={() => modalHandler(true)}>
+            <Button
+              size="sm"
+              className="bg-kb-gray px-2 py-[2px]"
+              onClick={() => modalHandler(true)}
+            >
               편집
             </Button>
           </div>
         </div>
         <div className="relative">
-          <div className="text-xs font-bold text-right transition-all duration-500 mb-1" style={{ width: `${perSent >= 90 ? 100 : perSent + 7}%` }}>
+          <div
+            className="text-xs font-bold text-right transition-all duration-500 mb-1"
+            style={{ width: `${perSent >= 90 ? 100 : perSent + 7}%` }}
+          >
             <span>{perSent}%</span>
           </div>
           <div className="w-full overflow-hidden rounded-md bg-slate-200 relative">
-            <span className={`block h-[20px] bg-kb-sub transition-all duration-500`} style={{ width: `${perSent}%` }} />
+            <span
+              className={`block h-[20px] bg-kb-sub transition-all duration-500`}
+              style={{ width: `${perSent}%` }}
+            />
             <span className="text-xs font-semibold absolute right-0 top-1/2 -translate-y-1/2">
               {money} / {targetAmount}
             </span>
           </div>
         </div>
       </div>
-      <ModalBasic isOpen={isOpen} setIsOpen={modalHandler} title="목표 수정하기">
-        <TargetBankModify refet={refet} setIsOpen={modalHandler} name={name} targetAmount={targetAmount} />
+      <ModalBasic
+        isOpen={isOpen}
+        setIsOpen={modalHandler}
+        title="목표 수정하기"
+      >
+        <TargetBankModify
+          refet={refet}
+          setIsOpen={modalHandler}
+          name={name}
+          targetAmount={targetAmount}
+        />
       </ModalBasic>
     </div>
   );
