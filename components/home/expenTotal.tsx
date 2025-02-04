@@ -4,6 +4,7 @@ import {
   getMonthlyIncomeAndExpense,
   getTotalAccountBalance,
 } from "@/actions/api";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export default function ExpenTotal() {
@@ -38,7 +39,13 @@ export default function ExpenTotal() {
       <div className="flex items-center justify-between ">
         <div className="text-center w-1/2">
           <p>{month}월 수입 지출 합계</p>
-          <p className="font-semibold text-xl text-warning">
+          <p
+            className={cn("font-semibold text-xl text-blue-500", {
+              "text-warning":
+                Math.sign(Number(data.monthSum)) > 0 ? false : true,
+            })}
+          >
+            {Math.sign(Number(data.monthSum)) > 0 ? "+" : "-"}
             {Number(data.monthSum).toLocaleString()}
           </p>
         </div>

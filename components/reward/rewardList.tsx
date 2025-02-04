@@ -14,16 +14,21 @@ export default function RewardList() {
       try {
         const res = await getRewardListByCategory(category);
         const listStates = await getUserRewardStatus();
-        console.log("res,listStates=>>", res, listStates);
-        const rewardList = res?.map((outerV) => {
-          const findVal = listStates.find(
-            (innerV) => innerV.rewardId === outerV.id
-          );
-          if (findVal) return { ...findVal, ...outerV };
-          return { ...outerV, rewardId: 0, progress: 0, status: "in_progress" };
-        });
-        console.log(rewardList);
-        setList(rewardList);
+        if (res instanceof Array) {
+          const rewardList = res?.map((outerV) => {
+            const findVal = listStates.find(
+              (innerV) => innerV.rewardId === outerV.id
+            );
+            if (findVal) return { ...findVal, ...outerV };
+            return {
+              ...outerV,
+              rewardId: 0,
+              progress: 0,
+              status: "in_progress",
+            };
+          });
+          setList(rewardList);
+        }
       } catch (error) {
         console.error("카테고리 리스트 에러", error);
       }
