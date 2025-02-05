@@ -12,7 +12,6 @@ type PropsType = {
 
 export default function PieChart({ data }: PropsType) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
   useEffect(() => {
     const ctx = canvasRef.current;
     if (!ctx) return;
@@ -28,7 +27,7 @@ export default function PieChart({ data }: PropsType) {
             right: 34,
           },
         },
-        animation: { duration: 200 },
+        animation: { duration: 500 },
         plugins: {
           datalabels: {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -42,8 +41,8 @@ export default function PieChart({ data }: PropsType) {
               return percentage;
             },
             color: "#000",
-            anchor: "end",
-            align: "end",
+            anchor: "center",
+            align: "center",
           },
           legend: {
             position: "bottom",
@@ -61,7 +60,7 @@ export default function PieChart({ data }: PropsType) {
     });
 
     return () => newChart.destroy();
-  }, []);
+  }, [data]);
 
   return <canvas ref={canvasRef} className="w-full h-full" />;
 }

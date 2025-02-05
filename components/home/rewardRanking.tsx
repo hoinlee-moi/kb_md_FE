@@ -26,10 +26,7 @@ export default async function RewardRanking() {
         <i>{point}</i> 점
       </p>
       <Link href="/reward">
-        <Button
-          className="bg-kb-main mt-3 text-kb-gray font-semibold"
-          size="sm"
-        >
+        <Button className="bg-kb-main mt-3 text-kb-gray font-semibold" size="sm">
           도전과제
         </Button>
       </Link>

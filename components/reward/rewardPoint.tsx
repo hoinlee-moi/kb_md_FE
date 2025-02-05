@@ -1,10 +1,9 @@
-// "use client";
+"use client";
+import { useReward } from "@/hooks/reward-contest";
 import PointSection from "../PointSection";
-// import { useEffect, useState } from "react";
-import { getRewardPoints } from "@/actions/api";
 
-export default async function RewardPoint() {
-  const point = await getRewardPoints();
+export default function RewardPoint() {
+  const { rewardInfo } = useReward();
   // const [point, setPoint] = useState(0);
   // useEffect(() => {
   //   (async () => {
@@ -16,5 +15,5 @@ export default async function RewardPoint() {
   //     }
   //   })();
   // }, []);
-  return <PointSection num={point} />;
+  return <PointSection num={rewardInfo.rewardPoint} />;
 }

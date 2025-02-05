@@ -16,23 +16,18 @@ export default function CategoryTab() {
         <div className="m-1.5">
           <div className="flex">
             <button
-              className={cn(
-                "btn bg-white border-gray-200 hover:bg-gray-50 text-gray-600 rounded-s-sm px-[5px] py-[2px]",
-                {
-                  "text-kb-main bg-kb-gray": category === "nationwide",
-                }
-              )}
+              className={cn("btn bg-kb-gray border-gray-200  text-gray-600 rounded-s-sm px-[5px] py-[2px]", {
+                "text-kb-main ": category === "nationwide",
+                "bg-white": category !== "nationwide",
+              })}
               onClick={() => setCategory("nationwide")}
             >
               전국
             </button>
             <button
-              className={cn(
-                "btn bg-white border-gray-200 hover:bg-gray-50 text-gray-600 rounded-e-sm px-[5px] py-[2px]",
-                {
-                  "text-kb-main bg-kb-gray": category === "region",
-                }
-              )}
+              className={cn("btn bg-white border-gray-200  text-gray-600 rounded-e-sm px-[5px] py-[2px]", {
+                "text-kb-main bg-kb-gray": category === "region",
+              })}
               onClick={() => setCategory("region")}
             >
               지역

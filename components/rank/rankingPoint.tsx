@@ -4,6 +4,7 @@ import PointSection from "../PointSection";
 import { getUserKBScore } from "@/actions/api";
 
 export default async function RankingPoint() {
+  // const score = 0;
   const score = await getUserKBScore();
   // const [score, setScore] = useState(8000);
 

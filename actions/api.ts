@@ -7,21 +7,21 @@ const userId = 1;
 
 // 전국 랭킹조회
 export const getNationalRanking = async (): Promise<GetRankResponDate> => {
-  const res = await fetch(`${URL}/api/rankings/nationwide/${userId}`);
+  const res = await fetch(`${URL}/api/rankings/nationwide/${userId}`, { cache: "no-store" });
 
   return res.json();
 };
 
 //지역 랭킹조회
 export const getRegionalRanking = async (): Promise<GetRankResponDate> => {
-  const res = await fetch(`${URL}/api/rankings/region/${userId}`);
+  const res = await fetch(`${URL}/api/rankings/region/${userId}`, { cache: "no-store" });
 
   return res.json();
 };
 
 // 사용자 KBScore조회
 export const getUserKBScore = async (): Promise<number> => {
-  const res = await fetch(`${URL}/api/rankings/score/${userId}`);
+  const res = await fetch(`${URL}/api/rankings/score/${userId}`, { cache: "no-store" });
 
   return res.json();
 };
@@ -36,9 +36,7 @@ export const claimReward = async (rewardId: number) => {
 };
 
 //카테고리별 리워드 목록 조회
-export const getRewardListByCategory = async (
-  category: string
-): Promise<GetRewardList[]> => {
+export const getRewardListByCategory = async (category: string): Promise<GetRewardList[]> => {
   const res = await fetch(`${URL}/api/rewards/list/${category}`, {
     cache: "no-store",
   });
@@ -65,10 +63,7 @@ export const getUserRewardStatus = async (): Promise<GetUserRewardState[]> => {
 };
 
 //저축 목표 추가
-export const addSavingGoal = async (data: {
-  name: string;
-  targetAmount: number;
-}) => {
+export const addSavingGoal = async (data: { name: string; targetAmount: number }) => {
   await fetch(`${URL}/api/saving-goals/add/${userId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -89,17 +84,13 @@ export const depositToSavingGoal = async (goalId: number) => {
 
 // 저축 목표 조회
 export const getSavingGoalInfo = async (): Promise<GetSavingGoalInfo[]> => {
-  const res = await fetch(`${URL}/api/saving-goals/inform/${userId}`);
+  const res = await fetch(`${URL}/api/saving-goals/inform/${userId}`, { cache: "no-store" });
 
   return res.json();
 };
 
 // 저축 목표 수정
-export const updateSavingGoal = async (data: {
-  goalId: number;
-  name: string;
-  targetAmount: number;
-}) => {
+export const updateSavingGoal = async (data: { goalId: number; name: string; targetAmount: number }) => {
   const res = await fetch(`${URL}/api/saving-goals/edit/${userId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -111,67 +102,46 @@ export const updateSavingGoal = async (data: {
 };
 
 // 파이 차트 카테고리별 비율 조회
-export const getCategoryExpenseChart = async (
-  month: number
-): Promise<getCategoryPie[] | void> => {
-  const res = await fetch(
-    `${URL}/api/transactions/category-summary/${userId}/${month}`,
-    {
-      cache: "no-store",
-    }
-  );
+export const getCategoryExpenseChart = async (month: number): Promise<getCategoryPie[] | void> => {
+  const res = await fetch(`${URL}/api/transactions/category-summary/${userId}/${month}`, {
+    cache: "no-store",
+  });
   if (res.ok) return res.json();
 };
 
 // 파이 차트 지출 수입 조회
-export const getMonthlyIncomeExpenseChart = async (
-  month: number
-): Promise<GetMonthlyPieEx | void> => {
-  const res = await fetch(
-    `${URL}/api/transactions/summary/${userId}/${month}`,
-    {
-      cache: "no-store",
-    }
-  );
+export const getMonthlyIncomeExpenseChart = async (month: number): Promise<GetMonthlyPieEx | void> => {
+  const res = await fetch(`${URL}/api/transactions/summary/${userId}/${month}`, {
+    cache: "no-store",
+  });
   if (res.ok) return res.json();
 };
 
 // 당월 지출 수입 합계 조회
-export const getMonthlyIncomeAndExpense = async (
-  month: string
-): Promise<GetMonthlyExTotal> => {
-  const res = await fetch(
-    `${URL}/api/transactions/monthly-summary/${userId}/${month}`
-  );
+export const getMonthlyIncomeAndExpense = async (month: number): Promise<GetMonthlyExTotal> => {
+  const res = await fetch(`${URL}/api/transactions/monthly-summary/${userId}/${month}`, { cache: "no-store" });
 
   return res.json();
 };
 
 // 달력 데이터 조회
-export const getMonthlyTransactionData = async (
-  month: number
-): Promise<GetMonthTransData[] | void> => {
-  const res = await fetch(
-    `${URL}/api/transactions/calendar/${userId}/${month}`,
-    {
-      cache: "no-store",
-    }
-  );
+export const getMonthlyTransactionData = async (month: number): Promise<GetMonthTransData[] | void> => {
+  const res = await fetch(`${URL}/api/transactions/calendar/${userId}/${month}`, {
+    cache: "no-store",
+  });
   if (res.ok) return res.json();
 };
 
 // 최근 거래 내역 조회
 export const getRecentTransactions = async (): Promise<GetRecentTrans[]> => {
-  const res = await fetch(`${URL}/api/transactions/recent/${userId}`);
+  const res = await fetch(`${URL}/api/transactions/recent/${userId}`, { cache: "no-store" });
 
   return res.json();
 };
 
 // 계좌 잔액 조회
 export const getTotalAccountBalance = async (): Promise<GetTotalAccBal> => {
-  const res = await fetch(
-    `${URL}/api/transactions/accounts/total-balance/${userId}`
-  );
+  const res = await fetch(`${URL}/api/transactions/accounts/total-balance/${userId}`, { cache: "no-store" });
 
   return res.json();
 };

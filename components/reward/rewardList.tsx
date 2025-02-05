@@ -1,68 +1,42 @@
 "use client";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import RewardItem from "./rewardItem";
-import { getRewardListByCategory, getUserRewardStatus } from "@/actions/api";
 import { useCategory } from "@/hooks/category.context";
+import { useReward } from "@/hooks/reward-contest";
 
 export default function RewardList() {
   const { category } = useCategory();
-  const [list, setList] = useState<(GetRewardList & GetUserRewardState)[]>([]);
+  const { rewardInfo, reFetchList } = useReward();
   const [desc, changeDesc] = useReducer((prev) => !prev, false);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await getRewardListByCategory(category);
-        const listStates = await getUserRewardStatus();
-        if (res instanceof Array) {
-          const rewardList = res?.map((outerV) => {
-            const findVal = listStates.find(
-              (innerV) => innerV.rewardId === outerV.id
-            );
-            if (findVal) return { ...findVal, ...outerV };
-            return {
-              ...outerV,
-              rewardId: 0,
-              progress: 0,
-              status: "in_progress",
-            };
-          });
-          setList(rewardList);
-        }
-      } catch (error) {
-        console.error("카테고리 리스트 에러", error);
-      }
-    })();
+    reFetchList(category);
   }, [category]);
 
-  useEffect(() => {
-    setList((prev) =>
-      prev.sort((a) => {
-        if (!desc) {
-          if (a.status === "completed") return 1;
-          if (a.status === "in_progress") return -1;
-          return 0;
-        } else {
-          if (a.status === "completed") return -1;
-          if (a.status === "in_progress") return 1;
-          return 0;
-        }
-      })
-    );
-  }, [desc]);
+  const sortedList = () => {
+    return rewardInfo.rewardList.sort((a) => {
+      if (!desc) {
+        if (a.status === "completed") return 1;
+        if (a.status === "in_progress") return -1;
+        return 0;
+      } else {
+        if (a.status === "completed") return -1;
+        if (a.status === "in_progress") return 1;
+        return 0;
+      }
+    });
+  };
 
   return (
     <div className="mt-1">
       <div className="text-right mb-5 mr-2">
         <button className="inline-block text-sm font-bold" onClick={changeDesc}>
-          <span className="text-xs -tracking-[6.5px] mr-2">
-            {desc ? "↑↓" : "↓↑"}
-          </span>
+          <span className="text-xs -tracking-[6.5px] mr-2">{desc ? "↑↓" : "↓↑"}</span>
           진행중
         </button>
       </div>
       <ul className="w-full space-y-5 relative">
-        {list.map((data, id) => (
+        {sortedList().map((data, id) => (
           <li key={id}>
             <RewardItem data={data} />
           </li>

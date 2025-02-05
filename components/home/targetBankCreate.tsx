@@ -2,13 +2,15 @@
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { addSavingGoal } from "@/actions/api";
+import { useTargetBank } from "@/hooks/targetBank-context";
 
 type PropsType = {
-  refet: () => void;
   setIsOpen: (value: boolean) => void;
 };
 
-export default function TargetBankCreate({ refet, setIsOpen }: PropsType) {
+export default function TargetBankCreate({ setIsOpen }: PropsType) {
+  const { refetchList } = useTargetBank();
+
   const submitHandler = async (formData: FormData) => {
     const target = formData.get("target") as string;
     const targetMoney = formData.get("targetMoney") as string;
@@ -16,7 +18,7 @@ export default function TargetBankCreate({ refet, setIsOpen }: PropsType) {
     try {
       await addSavingGoal({ name: target, targetAmount: +targetMoney });
       setIsOpen(false);
-      refet();
+      refetchList();
     } catch (error) {
       console.error(error);
     }

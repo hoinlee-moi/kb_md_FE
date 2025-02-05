@@ -13,7 +13,7 @@ export default function Calender() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await getMonthlyTransactionData(currentMonth);
+        const res = await getMonthlyTransactionData(currentMonth + 1);
         if (res) {
           setData(
             res.map((v) => ({

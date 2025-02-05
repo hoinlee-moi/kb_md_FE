@@ -27,10 +27,7 @@ export default async function KbSocre() {
         <i>{score} </i> 점
       </p>
       <Link href="/rank">
-        <Button
-          className="bg-kb-main mt-3 text-kb-gray font-semibold"
-          size="sm"
-        >
+        <Button className="bg-kb-main mt-3 text-kb-gray font-semibold" size="sm">
           랭킹보기
         </Button>
       </Link>

@@ -2,10 +2,7 @@
 import { useEffect, useState } from "react";
 import { CalendarProperties } from "../calender/calendar-properties";
 import PieChart from "../charts/pieChart";
-import {
-  getCategoryExpenseChart,
-  getMonthlyIncomeExpenseChart,
-} from "@/actions/api";
+import { getCategoryExpenseChart, getMonthlyIncomeExpenseChart } from "@/actions/api";
 
 export default function PieChartSection() {
   const { currentMonth } = CalendarProperties();
@@ -15,10 +12,9 @@ export default function PieChartSection() {
   useEffect(() => {
     (async () => {
       try {
-        const totRes = await getMonthlyIncomeExpenseChart(currentMonth);
-        const cateRes = await getCategoryExpenseChart(currentMonth);
-        console.log("curMonth>>>", currentMonth);
-        console.log("piechart>>>", totRes, cateRes);
+        const totRes = await getMonthlyIncomeExpenseChart(currentMonth + 1);
+        const cateRes = await getCategoryExpenseChart(currentMonth + 1);
+
         if (totRes && cateRes) {
           setTotData({
             labels: ["지출", "수입"],
@@ -38,13 +34,8 @@ export default function PieChartSection() {
               {
                 label: "",
                 data: cateRes.map((v) => v.totalAmount),
-                backgroundColor: ["#ffbc00 ", "#F7CD4C", "#67BFFF", "#8470FF"],
-                hoverBackgroundColor: [
-                  "#ffbc00 ",
-                  "#F0BB33",
-                  "#56B1F3",
-                  "#755FF8",
-                ],
+                backgroundColor: ["#ffbc00 ", "#F7CD4C", "#67BFFF", "#60584c"],
+                hoverBackgroundColor: ["#ffbc00 ", "#F0BB33", "#56B1F3", "#60584c"],
                 borderWidth: 0,
               },
             ],
@@ -59,11 +50,7 @@ export default function PieChartSection() {
   return (
     <>
       {totData && cateData && (
-        <div
-          className="flex w-full"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="flex w-full " data-aos="fade-up" data-aos-duration="1000">
           <div className="w-1/2 h-full">
             <PieChart data={totData} />
           </div>
@@ -81,7 +68,7 @@ export default function PieChartSection() {
 //   datasets: [
 //     {
 //       label: "",
-//       data: [1552, 213, 100, 6515],
+//       data: [1552, 2130, 3151, 6515],
 //       backgroundColor: ["#3EC972", "#F7CD4C", "#67BFFF", "#8470FF"],
 //       hoverBackgroundColor: ["#3EC972", "#F0BB33", "#56B1F3", "#755FF8"],
 //       borderWidth: 0,

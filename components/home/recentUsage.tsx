@@ -6,10 +6,10 @@ import { getRecentTransactions } from "@/actions/api";
 
 export default function RecentUsage() {
   const [count, setCount] = useState(3);
-  const [list, setList] = useState<GetRecentTrans[]>();
+  const [list, setList] = useState<GetRecentTrans[]>([]);
 
   const addPlustListHandler = () => {
-    setCount((prev) => (prev >= setList.length ? prev : prev + 3));
+    setCount((prev) => (prev >= list.length ? prev : prev + 3));
   };
 
   useEffect(() => {
@@ -31,12 +31,7 @@ export default function RecentUsage() {
           // category별 이미지 변환 생각
           <div className="flex items-center flex-nowrap" key={idx}>
             <div>
-              <Icon
-                alt=""
-                src="/assets/moneyicon.jpg"
-                className=""
-                imgSize="32"
-              />
+              <Icon alt="" src="/assets/moneyicon.jpg" className="" imgSize="32" />
             </div>
             <div className=" px-2 w-full font-semibold">
               <p className="">{content}</p>
@@ -56,10 +51,7 @@ export default function RecentUsage() {
         ))}
       </div>
       <div className="text-center ">
-        <button
-          onClick={addPlustListHandler}
-          className="text-slate-700 font-semibold"
-        >
+        <button onClick={addPlustListHandler} className="text-slate-700 font-semibold">
           더보기 {"∨"}
         </button>
       </div>
