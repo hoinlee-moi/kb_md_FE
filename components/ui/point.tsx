@@ -6,7 +6,6 @@ type PropsType = { target: number; loopCount?: number };
 
 export default function PointRullet({ target, loopCount = 20 }: PropsType) {
   const [countArr, setCountArr] = useState([0, 0]);
-
   useEffect(() => {
     const inter = setInterval(() => {
       setCountArr(([count, loop]) => {
@@ -18,7 +17,7 @@ export default function PointRullet({ target, loopCount = 20 }: PropsType) {
       });
     }, 20);
     return () => clearInterval(inter);
-  }, []);
+  }, [target]);
 
   return <>{countArr[0]}</>;
 }

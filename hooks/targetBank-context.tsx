@@ -24,7 +24,7 @@ export const TargetBankProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const refetchList = () => fetchBankList();
+  const refetchList = async () => await fetchBankList();
 
   useEffect(() => {
     (async () => {

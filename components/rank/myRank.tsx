@@ -1,3 +1,4 @@
+"use client";
 type PropsType = {
   rank: number;
   score: number;

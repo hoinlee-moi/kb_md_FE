@@ -5,7 +5,6 @@ import KbSocre from "@/components/home/kbScore";
 import RecentUsage from "@/components/home/recentUsage";
 import RewardRanking from "@/components/home/rewardRanking";
 import TargetBankSwiper from "@/components/home/targetBankSwiper";
-import { TargetBankProvider } from "@/hooks/targetBank-context";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -23,11 +22,10 @@ export default async function Home() {
       <section data-aos="fade-up" className="mb-5">
         <CalenderPieChart />
       </section>
-      <TargetBankProvider>
-        <section className="px-4 mx-4 mt-3 pt-1 bg-white shadow-sm rounded-xl" data-aos="fade-up" data-aos-delay="100">
-          <TargetBankSwiper />
-        </section>
-      </TargetBankProvider>
+      <section className="px-4 mx-4 mt-3 pt-1 bg-white shadow-sm rounded-xl" data-aos="fade-up" data-aos-delay="100">
+        <TargetBankSwiper />
+      </section>
+
       <h2 className="text-xl font-bold pl-5 mt-3" data-aos="fade-up" data-aos-delay="100">
         교육 컨텐츠
       </h2>

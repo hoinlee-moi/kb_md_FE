@@ -46,11 +46,22 @@ export default function RewardList() {
         </li>
         <li>
           <RewardItem rewardState="완료" />
-        </li>
-        <li>
-          <RewardItem rewardState="수령" />
+        </li> */}
+        {/* <li>
+          <RewardItem data={DUMMY} />
         </li> */}
       </ul>
     </div>
   );
 }
+
+// const DUMMY = {
+//   id: 1,
+//   name: "rewar1",
+//   category: "etc",
+//   goal: 100,
+//   points: 100,
+//   rewardId: 2,
+//   progress: 100,
+//   status: "in_progress",
+// };

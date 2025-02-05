@@ -1,3 +1,4 @@
+"use client";
 type PropsType = {
   data: GetRankData & { rank: number };
 };

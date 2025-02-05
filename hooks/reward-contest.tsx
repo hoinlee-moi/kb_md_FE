@@ -57,12 +57,6 @@ export const RewardContextProvider = ({ children }: PropsWithChildren) => {
     } catch (error) {
       console.error("카테고리 리스트 에러", error);
     }
-    // try {
-    //   const res = await getRewardListByCategory(category);
-    //   setRewardInfo((prev) => ({ ...prev, rewardList: res }));
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   const reFetchPoint = async () => await fetchRewardPoint();
