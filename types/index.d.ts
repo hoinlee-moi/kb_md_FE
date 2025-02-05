@@ -1,16 +1,3 @@
-type ChartDataset = {
-  label: string;
-  data: number[];
-  backgroundColor: string[];
-  hoverBackgroundColor: string[];
-  borderWidth: number;
-};
-
-type ChartData = {
-  labels: string[];
-  datasets: ChartDataset[];
-};
-
 //api type
 
 type GetRewardList = {
@@ -71,7 +58,4 @@ type GetRankData = {
   score: number;
 };
 
-type GetRankResponDate = [
-  GetRankData[],
-  { rank: number; score: number; region: string }
-];
+type GetRankResponDate = [GetRankData[], { rank: number; score: number; region: string }];

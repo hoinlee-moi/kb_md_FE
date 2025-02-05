@@ -79,7 +79,6 @@ export const depositToSavingGoal = async (goalId: number) => {
     headers: { "Content-Type": "application/json" },
     cache: "no-store",
   });
-  return res;
 };
 
 // 저축 목표 조회

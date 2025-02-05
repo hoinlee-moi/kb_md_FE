@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CalendarProperties } from "../calender/calendar-properties";
 import PieChart from "../charts/pieChart";
 import { getCategoryExpenseChart, getMonthlyIncomeExpenseChart } from "@/actions/api";
+import { ChartData } from "chart.js";
 
 export default function PieChartSection() {
   const { currentMonth } = CalendarProperties();
@@ -24,7 +25,8 @@ export default function PieChartSection() {
                 data: [totRes.totalExpense, totRes.totalIncome],
                 backgroundColor: ["#ffbc00 ", "#F7CD4C"],
                 hoverBackgroundColor: ["#ffbc00 ", "#F0BB33"],
-                borderWidth: 0,
+                borderWidth: 2,
+                borderColor: "#fff",
               },
             ],
           });
@@ -36,7 +38,8 @@ export default function PieChartSection() {
                 data: cateRes.map((v) => v.totalAmount),
                 backgroundColor: ["#ffbc00 ", "#F7CD4C", "#67BFFF", "#60584c"],
                 hoverBackgroundColor: ["#ffbc00 ", "#F0BB33", "#56B1F3", "#60584c"],
-                borderWidth: 0,
+                borderWidth: 2,
+                borderColor: "#fff",
               },
             ],
           });
@@ -71,7 +74,8 @@ export default function PieChartSection() {
 //       data: [1552, 2130, 3151, 6515],
 //       backgroundColor: ["#3EC972", "#F7CD4C", "#67BFFF", "#8470FF"],
 //       hoverBackgroundColor: ["#3EC972", "#F0BB33", "#56B1F3", "#755FF8"],
-//       borderWidth: 0,
+//       borderWidth: 2,
+//       borderColor: "#fff",
 //     },
 //   ],
 // };

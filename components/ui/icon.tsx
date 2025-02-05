@@ -1,3 +1,4 @@
+"use client";
 import { VariantProps, cva } from "class-variance-authority";
 import Image from "next/image";
 import { ReactNode } from "react";

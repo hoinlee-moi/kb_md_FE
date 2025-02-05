@@ -26,11 +26,9 @@ export default function TargetBank({ data: { name, savedAmount, targetAmount, go
 
   const depositToSave = async () => {
     try {
-      const res = await depositToSavingGoal(goalId);
-      if (res.ok) {
-        await reFetchUser();
-        await refetchList();
-      }
+      await depositToSavingGoal(goalId);
+      await reFetchUser();
+      await refetchList();
     } catch (error) {
       console.error(error);
     }
