@@ -1,11 +1,13 @@
 "use client";
 
-import { getMonthlyIncomeAndExpense, getTotalAccountBalance } from "@/actions/api";
+import { getMonthlyIncomeAndExpense, getRewardPoints, getTotalAccountBalance, getUserKBScore } from "@/actions/api";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 type UserType = {
   totalAccount: number;
   monthlyAccount: number;
   diffAccount: number;
+  score: number;
+  reward: number;
 };
 type UserContextType = {
   user: UserType;
@@ -17,6 +19,8 @@ const UserContext = createContext<UserContextType>({
     totalAccount: 0,
     monthlyAccount: 0,
     diffAccount: 0,
+    score: 0,
+    reward: 0,
   },
   reFetchUser: async () => {},
 });
@@ -26,9 +30,15 @@ export const UserContextProvier = ({ children }: PropsWithChildren) => {
     totalAccount: 0,
     monthlyAccount: 0,
     diffAccount: 0,
+    score: 0,
+    reward: 0,
   });
 
-  const reFetchUser = async () => await fetchUser();
+  const reFetchUser = async () => {
+    await fetchUser();
+    await fetchScore();
+    await fetchReward();
+  };
 
   const fetchUser = async () => {
     const date = new Date();
@@ -39,11 +49,28 @@ export const UserContextProvier = ({ children }: PropsWithChildren) => {
       const curMonth = await getMonthlyIncomeAndExpense(month);
       const totalAcc = await getTotalAccountBalance();
 
-      setUser({
+      setUser((prev) => ({
+        ...prev,
         monthlyAccount: curMonth.totalSum,
         totalAccount: totalAcc.userBalance,
         diffAccount: lastMonth.totalSum - curMonth.totalSum,
-      });
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const fetchScore = async () => {
+    try {
+      const res = await getUserKBScore();
+      setUser((prev) => ({ ...prev, score: res }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const fetchReward = async () => {
+    try {
+      const res = await getRewardPoints();
+      setUser((prev) => ({ ...prev, reward: res }));
     } catch (error) {
       console.error(error);
     }
@@ -52,6 +79,8 @@ export const UserContextProvier = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     (async () => {
       await fetchUser();
+      await fetchScore();
+      await fetchReward();
     })();
   }, []);
 

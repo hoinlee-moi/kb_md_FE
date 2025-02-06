@@ -9,6 +9,7 @@ import TabBar from "@/components/tabBar";
 import ResetButton from "@/components/home/resetButton";
 import { UserContextProvier } from "@/hooks/user-context";
 import { TargetBankProvider } from "@/hooks/targetBank-context";
+import Link from "next/link";
 
 const kbFonts = localFont({
   src: [
@@ -35,9 +36,11 @@ export default function RootLayout({
           <UserContextProvier>
             <TargetBankProvider>
               <div className="flex justify-between">
-                <h1 className="inline text-lg font-bold px-3 pt-2">
-                  <span className="text-kb-main">KB</span>국민은행
-                </h1>
+                <Link href="/">
+                  <h1 className="inline text-lg font-bold px-3 pt-2">
+                    <span className="text-kb-main">KB</span>국민은행
+                  </h1>
+                </Link>
                 <div className="px-3 pt-3">
                   <ResetButton />
                 </div>
