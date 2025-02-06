@@ -1,33 +1,22 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Icon from "../ui/icon";
-import { useEffect, useState } from "react";
-import { getRecentTransactions } from "@/actions/api";
+import { useUser } from "@/hooks/user-context";
+import { useState } from "react";
 
 export default function RecentUsage() {
+  const { user } = useUser();
   const [count, setCount] = useState(3);
-  const [list, setList] = useState<GetRecentTrans[]>([]);
 
   const addPlustListHandler = () => {
-    setCount((prev) => (prev >= list.length ? prev : prev + 3));
+    setCount((prev) => (prev >= user.recentList.length ? prev : prev + 3));
   };
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await getRecentTransactions();
-        setList(res);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
 
   return (
     <div>
       {/* <p className="text-lg font-bold border-b-2 border-black">최근 이용내역</p> */}
       <div className="flex flex-col space-y-1 ">
-        {list?.slice(0, count)?.map(({ amount, date, type, content }, idx) => (
+        {user.recentList.slice(0, count)?.map(({ amount, date, type, content }, idx) => (
           // category별 이미지 변환 생각
           <div className="flex items-center flex-nowrap" key={idx}>
             <div>

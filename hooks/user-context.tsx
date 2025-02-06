@@ -1,6 +1,6 @@
 "use client";
 
-import { getMonthlyIncomeAndExpense, getRewardPoints, getTotalAccountBalance, getUserKBScore } from "@/actions/api";
+import { getMonthlyIncomeAndExpense, getRecentTransactions, getRewardPoints, getTotalAccountBalance, getUserKBScore } from "@/actions/api";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 type UserType = {
   totalAccount: number;
@@ -8,6 +8,7 @@ type UserType = {
   diffAccount: number;
   score: number;
   reward: number;
+  recentList: GetRecentTrans[];
 };
 type UserContextType = {
   user: UserType;
@@ -21,6 +22,7 @@ const UserContext = createContext<UserContextType>({
     diffAccount: 0,
     score: 0,
     reward: 0,
+    recentList: [],
   },
   reFetchUser: async () => {},
 });
@@ -32,12 +34,14 @@ export const UserContextProvier = ({ children }: PropsWithChildren) => {
     diffAccount: 0,
     score: 0,
     reward: 0,
+    recentList: [],
   });
 
   const reFetchUser = async () => {
     await fetchUser();
     await fetchScore();
     await fetchReward();
+    await fetchRecentUsage();
   };
 
   const fetchUser = async () => {
@@ -76,11 +80,21 @@ export const UserContextProvier = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const fetchRecentUsage = async () => {
+    try {
+      const res = await getRecentTransactions();
+      setUser((prev) => ({ ...prev, recentList: res }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       await fetchUser();
       await fetchScore();
       await fetchReward();
+      await fetchRecentUsage();
     })();
   }, []);
 
